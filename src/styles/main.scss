@@ -1,0 +1,17 @@
+:root {
+    font-family: "JetBrains Mono";
+}
+
+body {
+    background: black;
+    color: white;
+}
+
+#navbar {
+    display: flex;
+    a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: white;
+    }
+}

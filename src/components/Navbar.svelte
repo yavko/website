@@ -1,0 +1,9 @@
+<script lang="ts">
+    export let navbarItems;
+</script>
+
+<nav id="navbar">
+    {#each navbarItems as item, i}
+        <a href="{item.permalink}">{item.name}</a>
+    {/each}
+</nav>

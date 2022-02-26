@@ -1,0 +1,23 @@
+---
+import Navbar from '../components/Navbar.svelte';
+import Footer from '../components/Footer.svelte';
+import {navbarItems} from "../../config.mjs"
+import "@fontsource/jetbrains-mono";
+
+const {title}:Record<string,any> = Astro.props;
+
+---
+
+<html lang="en">
+
+    <head>
+        <title>Yavko - {title}</title>
+        <link rel="stylesheet" href={Astro.resolve('../styles/main.scss')}>
+    </head>
+    <body>
+        <Navbar navbarItems={navbarItems} />
+        <slot />
+        <Footer />
+    </body>
+
+</html>
