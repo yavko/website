@@ -6,7 +6,10 @@ import { getAllPosts } from '../../posts';
 
 const posts = await getAllPosts();
 
-const meta = { title: 'Blog' };
+const meta = {
+  title: "Blog",
+  description: "Page to fund blog posts for yavko.com"
+}
 ---
 
 <Page meta={meta}>
