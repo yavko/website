@@ -1,0 +1,25 @@
+---
+// src/pages/blog.astro
+import Page from '../../layouts/page.astro'
+import Card from '../../components/card.svelte'
+import { getAllPosts } from '../../posts';
+
+const posts = await getAllPosts();
+
+const meta = { title: 'Blog' };
+---
+
+<Page meta={meta}>
+<h1>Blog Posts</h1>
+    <ul role="list" class="posts">
+        {posts.map(post => {
+            return (
+                <li class="post card">
+                    <a href={post.href}>
+                    <Card post={post} />
+                    </a>
+                </li>
+            )
+        })}
+    </ul>
+</Page>

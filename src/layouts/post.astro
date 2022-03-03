@@ -1,0 +1,30 @@
+---
+import Page from "./page.astro"
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+		authors: string[];
+		publishDate: string | Date;
+		socialImage: string;
+	}
+}
+
+const { content: { title, publishDate, description, authors, socialImage } } = Astro.props as Props;
+const { canonicalURL } = Astro.request;
+const meta = {
+	title,
+	description,
+	canonicalURL,
+	image: socialImage,
+}
+---
+
+<Page meta={meta}>
+    <h1>{meta.title}</h1>
+    <p>{meta.description}</p>
+	<p>Posted on {(new Date(publishDate)).toDateString()} by {authors.join(", ")}</p>
+	<hr />
+	<slot />
+</Page>

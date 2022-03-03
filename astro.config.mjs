@@ -10,4 +10,8 @@
 export default /** @type {import('astro').AstroUserConfig} */ ({
 	// Enable the Svelte renderer to support Svelte components.
 	renderers: ['@astrojs/renderer-svelte'],
+	buildOptions: {
+		site: "http://localhost:3000",
+		sitemap: true,
+	  },
 });

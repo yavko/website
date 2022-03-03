@@ -1,17 +1,79 @@
+$bg: black;
+$fg: white;
+
 :root {
     font-family: "JetBrains Mono";
 }
 
 body {
-    background: black;
-    color: white;
+    background: $bg;
+    color: $fg;
+}
+
+a {
+    color: $fg;
+    text-decoration: underline;
+    .icon {
+        text-decoration: none;
+    }
+}
+
+.posts {
+    list-style: none;
+}
+
+.card {
+    .card-title {
+        text-decoration: underline solid $bg;
+        transition: text-decoration 0.5s ease;
+        font-size: larger;
+        &:hover {
+            text-decoration: underline solid $fg;
+        }
+    }
+    .card-details {
+        text-decoration: none;
+    }
+    border-radius: 10px;
+    border-style: solid;
+    border: 2px 2px 2px 2px;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: $fg;
+    .socials {
+        a {
+            margin-right: 10px;
+        }
+        display: flex;
+        justify-content: center;
+    }
+    .copyright {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+#content {
+    text-align: center;
 }
 
 #navbar {
     display: flex;
+    justify-content: center;
     a {
+        text-decoration: underline solid $bg;
+        transition: text-decoration 0.5s ease;
+        display: block;
         margin-right: 10px;
-        text-decoration: none;
-        color: white;
+        color: $fg;
+        &:hover {
+            text-decoration: underline solid $fg;
+        }
     }
+
 }

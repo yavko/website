@@ -4,19 +4,25 @@ specifiers:
   '@fontsource/jetbrains-mono': ^4.5.3
   astro: ^0.23.1
   autoprefixer: ^10.4.2
+  date-fns: ^2.28.0
   feather-icons: ^4.28.0
   postcss: ^8.4.7
   sass: ^1.49.9
+  smartypants: ^0.1.6
+  svelte-feather-icons: ^3.5.1
 
 dependencies:
   '@fontsource/jetbrains-mono': 4.5.3
-  feather-icons: 4.28.0
+  date-fns: 2.28.0
+  smartypants: 0.1.6
 
 devDependencies:
   astro: 0.23.1_sass@1.49.9
   autoprefixer: 10.4.2_postcss@8.4.7
+  feather-icons: 4.28.0
   postcss: 8.4.7
   sass: 1.49.9
+  svelte-feather-icons: 3.5.1
 
 packages:
 
@@ -944,7 +950,7 @@ packages:
 
   /classnames/2.3.1:
     resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
-    dev: false
+    dev: true
 
   /code-block-writer/10.1.1:
     resolution: {integrity: sha512-67ueh2IRGst/51p0n6FvPrnRjAGHY5F8xdjkgrYE7DDzpJe6qA07RYQ9VcoUeo5ATOjSOiWpSL3SWBRRbempMw==}
@@ -981,11 +987,16 @@ packages:
   /core-js/3.21.1:
     resolution: {integrity: sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==}
     requiresBuild: true
-    dev: false
+    dev: true
 
   /csstype/2.6.19:
     resolution: {integrity: sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==}
     dev: true
+
+  /date-fns/2.28.0:
+    resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -1609,7 +1620,7 @@ packages:
     dependencies:
       classnames: 2.3.1
       core-js: 3.21.1
-    dev: false
+    dev: true
 
   /fill-range/7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
@@ -3143,6 +3154,11 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /smartypants/0.1.6:
+    resolution: {integrity: sha512-zGXh+Q6Y3OPTLM5x2HxAIkEAj4ZcePftmIOdIYozv2T+m03Sp5R4YppczKuo6IdnSMc99U+Wgvy8Mil0eeep7g==}
+    hasBin: true
+    dev: false
+
   /sorcery/0.10.0:
     resolution: {integrity: sha1-iukK19fLBfxZ8asMY3hF1cFaUrc=}
     hasBin: true
@@ -3274,6 +3290,12 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /svelte-feather-icons/3.5.1:
+    resolution: {integrity: sha512-hYDo7/D24+RiWDHWtBq7rPFHIsKLlq0nqY6FJ7R6b3k/FfzgAgW69gM/xYzx7nG/Kt9CH7pVz4y5RR7YDn+KVg==}
+    dependencies:
+      svelte: 3.46.4
     dev: true
 
   /svelte-hmr/0.14.9_svelte@3.46.4:

@@ -1,0 +1,34 @@
+---
+import Post from '../../layouts/post.astro';
+import { getAllPosts } from '../../posts';
+
+export async function getStaticPaths({rss}) {
+  const posts = await getAllPosts();
+
+  const allPosts = Astro.fetchContent('../../posts/*.md');
+  const sortedPosts = allPosts.sort((a: any, b:any) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+ 	rss({
+		title: 'Yavko\'s Blog',
+		description: 'A blog made on astro',
+		items: posts.map(p => ({
+			title: p.title,
+			description: p.description,
+			link: p.href,
+			pubDate: p.publishDate,
+		}))
+	});
+
+return posts.map((p) => {
+		return {
+			params: { slug: p.href.replace('/blog/', '') },
+			props: { post: p },
+		}
+	});
+}
+
+const { post } = Astro.props;
+---
+
+<Post content={post}>
+  <post.Content />
+</Post>
