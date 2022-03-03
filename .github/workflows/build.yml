@@ -36,6 +36,9 @@ jobs:
       - name: Build
         run: pnpm run build
         
+      - name: Add CNAME
+        run: cp .github/CNAME dist/CNAME
+        
       - name: Upload Build
         uses: actions/upload-artifact@v2.3.1
         with:
