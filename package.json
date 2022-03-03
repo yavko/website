@@ -15,7 +15,8 @@
     "feather-icons": "^4.28.0",
     "postcss": "^8.4.7",
     "sass": "^1.49.9",
-    "svelte-feather-icons": "^3.5.1"
+    "svelte-feather-icons": "^3.5.1",
+    "astro-seo": "^0.4.2"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^4.5.3",

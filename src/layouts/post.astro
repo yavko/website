@@ -7,17 +7,49 @@ export interface Props {
 		description: string;
 		authors: string[];
 		publishDate: string | Date;
-		socialImage: string;
+		socialImage: Record<string, any>;
+		lang: string;
+		tags: string[];
+		section: string;
+		modifiedDate: string | Date;
 	}
 }
 
-const { content: { title, publishDate, description, authors, socialImage } } = Astro.props as Props;
+const { content: { title, publishDate, description, authors, socialImage, lang, tags, section, modifiedDate } } = Astro.props as Props;
 const { canonicalURL } = Astro.request;
+
 const meta = {
 	title,
 	description,
 	canonicalURL,
-	image: socialImage,
+	openGraph: {
+		basic: {
+			image: socialImage.url ?? "/android-chrome-512x512.png",
+			title: title,
+			description: description,
+			type: "article",
+			url: canonicalURL
+		},
+		article: {
+			publishTime: (new Date(publishDate)).toISOString(),
+			author: authors,
+			tag: tags,
+			section,
+			modifiedDate: (new Date(modifiedDate)).toISOString()
+		},
+		optional: {
+			locale: lang,
+			siteName: "yavko"
+		},
+		twitter: {
+			card: "app",
+			site: "lolyavko",
+			creator: "lolyavko"
+		},
+		image: {
+			alt: socialImage.alt
+		}
+	}
 }
 ---
 

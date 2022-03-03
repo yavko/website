@@ -2,6 +2,4 @@
     "astro.plugin.typescript.enable": true,
     "stylelint.enable": true,
     "svelte.enable-ts-plugin": true,
-    "svelte.plugin.typescript.definitions.enable": true,
-    "svelte.plugin.typescript.implementation.enable": true
 }
