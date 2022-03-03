@@ -11,7 +11,13 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
 	// Enable the Svelte renderer to support Svelte components.
 	renderers: ['@astrojs/renderer-svelte'],
 	buildOptions: {
-		site: "http://localhost:3000",
+		site: "https://yavko.com",
 		sitemap: true,
-	  },
+	},
+	vite: {
+		ssr: {
+		  noExternal: ['smartypants'],
+		  external: ["svgo"],
+		},
+	},
 });

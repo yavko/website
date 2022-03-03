@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar.svelte';
 import Footer from '../components/Footer.svelte';
 import { navbarItems, socials, siteData  } from "../../config.mjs"
 import "@fontsource/jetbrains-mono";
+import "../styles/main.scss"
 
 const {title}:Record<string,any> = Astro.props.meta;
 
@@ -12,7 +13,6 @@ const {title}:Record<string,any> = Astro.props.meta;
 
     <head>
         <title>{siteData.name} - {title}</title>
-        <link rel="stylesheet" href={Astro.resolve('../styles/main.scss')}>
     </head>
     <body>
         <Navbar navbarItems={navbarItems} />

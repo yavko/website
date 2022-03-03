@@ -1,6 +1,6 @@
-<script lang="ts">
+<script script lang="ts">
   export let post;
-  import { smartypants } from "smartypants";
+  import { smartypants } from "smartypants"
   const date = new Date(post.publishDate);
 </script>
 
