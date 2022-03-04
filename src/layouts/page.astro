@@ -3,8 +3,6 @@ import Navbar from '../components/Navbar.svelte';
 import Footer from '../components/Footer.svelte';
 import { navbarItems, socials, siteData  } from "../../config.mjs"
 import { SEO } from "astro-seo";
-
-// import "@fontsource/jetbrains-mono";
 import "../styles/main.scss"
 
 let {title, description, openGraph, twitter }:Record<string,any> = Astro.props.meta;

@@ -1,5 +1,5 @@
 {
-    "astro.plugin.typescript.enable": true,
-    "stylelint.enable": true,
-    "svelte.enable-ts-plugin": true,
+  "astro.plugin.typescript.enable": true,
+  "stylelint.enable": true,
+  "svelte.enable-ts-plugin": true
 }

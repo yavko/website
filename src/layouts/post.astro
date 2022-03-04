@@ -1,5 +1,7 @@
 ---
 import Page from "./page.astro"
+import { generateSocialImage } from 'astro-social-images';
+import figlet from "figlet"
 
 export interface Props {
 	content: {
@@ -18,13 +20,44 @@ export interface Props {
 const { content: { title, publishDate, description, authors, socialImage, lang, tags, section, modifiedDate } } = Astro.props as Props;
 const { canonicalURL } = Astro.request;
 
+let ycon;
+
+figlet("y", (err,data) => {
+	if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+    }
+    ycon = data;
+})
+
+const image = generateSocialImage({
+	style: ".social-title, .social-description { font-family: 'JetBrains Mono', monospace }",
+	backgroundColor: '#000000',
+	texts: [
+		{
+      		content: title,
+      		attributes: { x: '55', y: '105', 'font-size': '75px', fill: '#FFFFFF', class: "social-title" },
+    	},
+    	{
+      		content: description,
+      		attributes: { x: '50', y: '325', 'font-size': '50px', fill: '#FFFFFF', class: "social-description" },
+    	},
+		{
+			content: ycon,
+			attributes: { top: "375", left: "900", 'font-size': '25px', fill: '#FFFFFF', class: "social-icon" }
+		}
+	],
+});
+
+
 const meta = {
 	title,
 	description,
 	canonicalURL,
 	openGraph: {
 		basic: {
-			image: socialImage.url ?? "/android-chrome-512x512.png",
+			image: socialImage.url ?? "/socials/" + image.hash,
 			title: title,
 			description: description,
 			type: "article",
@@ -42,7 +75,7 @@ const meta = {
 			siteName: "yavko"
 		},
 		twitter: {
-			card: "app",
+			card: "summary_large_image",
 			site: "lolyavko",
 			creator: "lolyavko"
 		},

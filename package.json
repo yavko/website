@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build --experimental-static-build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "format": "prettier -w ."
   },
   "devDependencies": {
     "astro": "^0.23.5",
@@ -15,12 +16,15 @@
     "autoprefixer": "^10.4.2",
     "feather-icons": "^4.28.0",
     "postcss": "^8.4.7",
+    "prettier-plugin-astro": "^0.0.12",
     "sass": "^1.49.9",
     "svelte-feather-icons": "^3.5.1"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^4.5.3",
+    "astro-social-images": "^0.3.3",
     "date-fns": "^2.28.0",
+    "figlet": "^1.5.2",
     "smartypants": "^0.1.6",
     "svgo": "^2.8.0"
   }

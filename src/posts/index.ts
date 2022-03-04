@@ -1,4 +1,4 @@
-import { parse, isBefore } from 'date-fns';
+import { parse, isBefore } from "date-fns";
 
 export async function getAllPosts() {
   const files = await import.meta.glob("./**/*.md");
@@ -6,10 +6,20 @@ export async function getAllPosts() {
     await Promise.all(
       Object.values(files).map((importFile: any, index) =>
         importFile().then((res) => {
-          const { title, description, authors, publishDate, socialImage, lang, section, modifiedDate, tags } = res.frontmatter;
+          const {
+            title,
+            description,
+            authors,
+            publishDate,
+            socialImage,
+            lang,
+            section,
+            modifiedDate,
+            tags,
+          } = res.frontmatter;
           const href = Object.keys(files)
             [index].replace(/^\./, "/blog")
-                .replace(/\.md$/, "");
+            .replace(/\.md$/, "");
 
           return {
             title,
@@ -22,7 +32,7 @@ export async function getAllPosts() {
             section,
             modifiedDate: parse(modifiedDate, "MMMM d, yyyy", new Date()),
             tags,
-            Content: res.default
+            Content: res.default,
           };
         })
       )
