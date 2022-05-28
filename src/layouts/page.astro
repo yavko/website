@@ -10,13 +10,11 @@ let {title, description, openGraph, twitter }:Record<string,any> = Astro.props.m
 let og;
 
 if (!openGraph && !openGraph?.article) {
-
-
 	og = {
         basic: {
 		    image: "/favicons/android-chrome-512x512.png",
-	    	title,
-            description,
+	    	title: title,
+            description: description,
 		    type: "website",
 	    },
         image: {
