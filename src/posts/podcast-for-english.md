@@ -15,7 +15,7 @@ lang: "en"
 # Podcast
 No description yet, but here is audio :)
 
-<audio controls>
+<audio controls="controls">
   <source src="/podcast-final.mp3" type="audio/mpeg" />
 Your browser does not support the audio element.
 </audio> 
