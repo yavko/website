@@ -3,7 +3,7 @@ layout: ../../layouts/post.astro
 title: "Podcast"
 description: "Uhm my 8th grade english final project podcast"
 pubDate: "May 27, 2022"
-modDate: "May 28, 2022"
+modDate: "Jun 6, 2022"
 section: school
 tags:
   - podcast

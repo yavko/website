@@ -68,8 +68,7 @@
 <Page meta={meta}>
 	<h1>{meta.title}</h1>
 	<p>{meta.description}</p>
-	<p>Posted on {dateStuff(pubDate, "fancy")} and had been modified at {dateStuff(modDate, "fancy")} by {authors.join(",
-		")}
+	<p>Posted on {dateStuff(pubDate, "fancy")} and had been modified at {dateStuff(modDate, "fancy")} by {authors.join(",")}
 	</p>
 	<hr />
 	<slot />
