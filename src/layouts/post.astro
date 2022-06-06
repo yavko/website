@@ -1,95 +1,76 @@
 ---
-import Page from "./page.astro"
-import { generateSocialImage } from 'astro-social-images';
-import figlet from "figlet"
+	import Page from "./page.astro";
+	import { generateSocialImage } from 'astro-social-images';
+	import figlet from "figlet";
+	import { Post } from '../types';
+	import dateStuff from '../dates';
+	import Date from '../components/Date.astro';
 
-export interface Props {
-	content: {
-		title: string;
-		description: string;
-		authors: string[];
-		publishDate: string | Date;
-		socialImage: Record<string, any>;
-		lang: string;
-		tags: string[];
-		section: string;
-		modifiedDate: string | Date;
-	}
-}
+	const { title, pubDate, modDate, description, authors, socialImage, lang, tags, section } = Astro.props.content as Post;
+	const { canonicalURL } = Astro;
 
-const { content: { title, publishDate, description, authors, socialImage, lang, tags, section, modifiedDate } } = Astro.props as Props;
-const { canonicalURL } = Astro.request;
+	const ycon = figlet.textSync('y');
 
-let ycon;
+	const image = generateSocialImage({
+		style: ".social-title, .social-description { font-family: 'JetBrains Mono', monospace }",
+		backgroundColor: '#000000',
+		texts: [
+			{
+				content: title,
+				attributes: { x: '55', y: '105', 'font-size': '75px', fill: '#FFFFFF', class: "social-title" }
+			},
+			{
+				content: description,
+				attributes: { x: '50', y: '325', 'font-size': '50px', fill: '#FFFFFF', class: "social-description" }
+			},
+			{
+				content: ycon,
+				attributes: { top: "375", left: "900", 'font-size': '25px', fill: '#FFFFFF', class: "social-icon" }
+			}
+		]
+	});
 
-figlet("y", (err,data) => {
-	if (err) {
-        console.log('Something went wrong...');
-        console.dir(err);
-        return;
-    }
-    ycon = data;
-})
-
-const image = generateSocialImage({
-	style: ".social-title, .social-description { font-family: 'JetBrains Mono', monospace }",
-	backgroundColor: '#000000',
-	texts: [
-		{
-      		content: title,
-      		attributes: { x: '55', y: '105', 'font-size': '75px', fill: '#FFFFFF', class: "social-title" },
-    	},
-    	{
-      		content: description,
-      		attributes: { x: '50', y: '325', 'font-size': '50px', fill: '#FFFFFF', class: "social-description" },
-    	},
-		{
-			content: ycon,
-			attributes: { top: "375", left: "900", 'font-size': '25px', fill: '#FFFFFF', class: "social-icon" }
-		}
-	],
-});
-
-
-const meta = {
-	title,
-	description,
-	canonicalURL,
-	openGraph: {
-		basic: {
-			image: socialImage.url ?? "/socials/" + image.hash,
-			title: title,
-			description: description,
-			type: "article",
-			url: canonicalURL
-		},
-		article: {
-			publishTime: (new Date(publishDate)).toISOString(),
-			author: authors,
-			tag: tags,
-			section,
-			modifiedDate: (new Date(modifiedDate)).toISOString()
-		},
-		optional: {
-			locale: lang,
-			siteName: "yavko"
-		},
-		twitter: {
-			card: "summary_large_image",
-			site: "lolyavko",
-			creator: "lolyavko"
-		},
-		image: {
-			alt: socialImage.alt
+	const meta = {
+		title,
+		description,
+		canonicalURL,
+		openGraph: {
+			basic: {
+				image: image.url ?? "/socials/" + image.hash,
+				title: title,
+				description: description,
+				type: "article",
+				url: canonicalURL
+			},
+			article: {
+				publishTime: dateStuff(pubDate, "iso"),
+				author: authors,
+				tag: tags,
+				section,
+				modifiedDate: dateStuff(modDate, "iso")
+			},
+			optional: {
+				locale: lang,
+				siteName: "yavko"
+			},
+			twitter: {
+				card: "summary_large_image",
+				site: "lolyavko",
+				creator: "lolyavko"
+			},
+			image: {
+				alt: socialImage?.alt ?? "Social Image"
+			}
 		}
 	}
-}
+
 ---
-
 <Page meta={meta}>
-    <h1>{meta.title}</h1>
-    <p>{meta.description}</p>
-	<p>Posted on {(new Date(publishDate)).toDateString()} by {authors.join(", ")}</p>
+	<h1>{meta.title}</h1>
+	<p>{meta.description}</p>
+	<p>Posted on {dateStuff(pubDate, "fancy")} and had been modified at {dateStuff(modDate, "fancy")} by {authors.join(",
+		")}
+	</p>
 	<hr />
 	<slot />
 </Page>
