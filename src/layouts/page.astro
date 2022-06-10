@@ -5,7 +5,7 @@
 	import { SEO } from "astro-seo";
 	import "../styles/main.scss";
 
-	let { title, description, openGraph, twitter }: Record<string, any> = Astro.props.meta;
+	const { title, description, openGraph, canonicalURL }: Record<string, any> = Astro.props.meta;
 
 	if (!openGraph && !openGraph?.article) {
 		var og = {
@@ -36,10 +36,8 @@
 			{ rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#000" }
 		],
 		meta: [
-			{ name: "msapplication-TileColor", content: "#000000" },
-			{ name: "msapplication-config", content: "/browserconfig.xml" },
+			{ name: "msapplication-TileColor", content: "#000" },
 			{ name: "theme-color", content: "#FFF" },
-			{ name: "viewport", content: "width=device-width, initial-scale=1" },
 			{ name: "twitter:image", content: (og?.basic?.image ?? openGraph?.basic?.image) ?? "/favicon.svg" },
 		]
 
@@ -49,7 +47,8 @@
 <html lang="en">
 
 <head>
-	<SEO title={siteData.name + " - " + title} description={description} openGraph={og ?? openGraph} twitter={twitter}
+	<SEO title={siteData.name + " - " + title} description={description} openGraph={og ?? openGraph}
+		twitter={openGraph?.twitter ?? og?.twitter} canonicalURL={canonicalURL ?? openGraph?.basic?.url}
 		extend={faviconMeta} />
 </head>
 
