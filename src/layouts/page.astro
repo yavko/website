@@ -10,7 +10,7 @@
 	if (!openGraph && !openGraph?.article) {
 		var og = {
 			basic: {
-				image: "/favicons.svg",
+				image: "/favicon.svg",
 				title: title,
 				description: description,
 				type: "website",
@@ -40,7 +40,7 @@
 			{ name: "msapplication-config", content: "/browserconfig.xml" },
 			{ name: "theme-color", content: "#FFF" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ name: "twitter:image", content: (og?.basic?.image ?? openGraph?.basic?.image) ?? "/favicons.svg" },
+			{ name: "twitter:image", content: (og?.basic?.image ?? openGraph?.basic?.image) ?? "/favicon.svg" },
 		]
 
 	}
