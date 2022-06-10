@@ -1,9 +1,9 @@
 $bg: black;
 $fg: white;
 
-
 :root {
-  font-family: "JetBrains Mono", monospace;
+  font-family: JetBrains Mono, Menlo, Consolas, Monaco, Liberation Mono,
+    Lucida Console, monospace;
 }
 
 body {
@@ -21,6 +21,10 @@ a {
 
 .posts {
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  padding: unset;
 }
 
 .card {
@@ -28,19 +32,21 @@ a {
     text-decoration: underline solid $bg;
     transition: text-decoration 0.5s ease;
     font-size: larger;
+    display: inline-block;
     &:hover {
-      text-decoration: underline solid $fg;
+      text-decoration: underline solid $fg !important;
     }
   }
   .card-details {
-    text-decoration: none;
+    text-decoration: none !important;
+    display: inline-block;
   }
   border-radius: 10px;
   border-style: solid;
   border: 2px 2px 2px 2px;
 }
 
-#footer {
+footer {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -59,18 +65,21 @@ a {
   }
 }
 
-#content {
+main {
   text-align: center;
+  padding: unset;
 }
 
 #navbar {
-  display: flex;
+  text-align: center;
   justify-content: center;
+  display: flex;
+  gap: 10px;
+  list-style: none;
+
   a {
     text-decoration: underline solid $bg;
     transition: text-decoration 0.5s ease;
-    display: block;
-    margin-right: 10px;
     color: $fg;
     &:hover {
       text-decoration: underline solid $fg;

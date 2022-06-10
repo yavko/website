@@ -19,7 +19,7 @@ export const socials = [
   },
 ];
 
-/* When using URL's not on this site use two /
+/* When using crossorigin URL's use two /
  * Parameters: name, permalink
  **/
 

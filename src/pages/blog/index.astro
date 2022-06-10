@@ -1,43 +1,42 @@
 ---
-import Page from '../../layouts/page.astro'
-import Card from '../../components/card.svelte'
+	import Page from '../../layouts/page.astro'
+	import Card from '../../components/card.svelte'
 
-import dateStuff, { isAfter, isBefore } from '../../dates'
+	import dateStuff, { isAfter, isBefore } from '../../dates'
 
-const posts = await Astro.glob('./*.md')
-    .then(posts => posts
-        .map(({ frontmatter, url }) => ({
-            title: frontmatter.title,
-            description: frontmatter.description,
-            authors: frontmatter.authors,
-            pubDate: dateStuff(frontmatter.pubDate, "date"),
-						modDate: dateStuff(frontmatter.modDate, "date"),
-            href: url
-        }))
-        .sort((a, b) => {
-            if (isBefore(a.pubDate, b.pubDate)) return 1;
-            if (isAfter(a.pubDate, b.pubDate)) return -1;
-            return 0;
-        })
-    );
+	const posts = await Astro.glob('./*.md')
+		.then(posts => posts
+			.map(({ frontmatter, url }) => ({
+				title: frontmatter.title,
+				description: frontmatter.description,
+				authors: frontmatter.authors,
+				pubDate: dateStuff(frontmatter.pubDate, "date"),
+				modDate: dateStuff(frontmatter.modDate, "date"),
+				href: url
+			}))
+			.sort((a, b) => {
+				if (isBefore(a.pubDate, b.pubDate)) return 1;
+				if (isAfter(a.pubDate, b.pubDate)) return -1;
+				return 0;
+			})
+		);
 
-const meta = {
-  title: "Blog",
-  description: "Page to find blog posts for yavko.com"
-}
+	const meta = {
+		title: "Blog",
+		description: "Page to find blog posts for yavko.com"
+	}
 ---
-
 <Page meta={meta}>
-<h1>Blog Posts</h1>
-    <ul role="list" class="posts">
-        {posts.map(post => {
-            return (
-                <li class="post card">
-                    <a href={post.href}>
-                    <Card post={post} />
-                    </a>
-                </li>
-            )
-        })}
-    </ul>
-</Page>
+	<h1>Blog Posts</h1>
+	<ul role="list" class="posts">
+		{posts.map(post => {
+		return (
+		<li class="post card">
+			<a href={post.href}>
+				<Card post={post} />
+			</a>
+		</li>
+		)
+		})}
+	</ul>
+</Page></Page>

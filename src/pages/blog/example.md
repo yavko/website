@@ -15,7 +15,6 @@ lang: "en"
 socialImage:
   url: "https://avatars.githubusercontent.com/u/15178513"
   alt: "face"
-
 ---
 
 very cool example

@@ -1,77 +1,66 @@
 ---
-import Navbar from '../components/Navbar.svelte';
-import Footer from '../components/Footer.svelte';
-import { navbarItems, socials, siteData  } from "../../config.mjs"
-import { SEO } from "astro-seo";
-import "../styles/main.scss"
+	import Navbar from '../components/Navbar.svelte';
+	import Footer from '../components/Footer.svelte';
+	import { navbarItems, socials, siteData } from "../../config.mjs"
+	import { SEO } from "astro-seo";
+	import "../styles/main.scss";
 
-//import '@fontsource/jetbrains-mono';
+	let { title, description, openGraph, twitter }: Record<string, any> = Astro.props.meta;
 
-let {title, description, openGraph, twitter }:Record<string,any> = Astro.props.meta;
+	if (!openGraph && !openGraph?.article) {
+		var og = {
+			basic: {
+				image: "/favicons.svg",
+				title: title,
+				description: description,
+				type: "website",
+			},
+			image: {
+				alt: "logo"
+			},
+			optional: {
+				locale: "en",
+				siteName: "yavko"
+			},
+			twitter: {
+				card: "app",
+				site: "lolyavko",
+				creator: "lolyavko"
+			}
+		}
+	}
 
-let og;
+	const faviconMeta = {
 
-if (!openGraph && !openGraph?.article) {
-	og = {
-        basic: {
-		    image: "/favicons/android-chrome-512x512.png",
-	    	title: title,
-            description: description,
-		    type: "website",
-	    },
-        image: {
-            alt: "logo"
-        },
-	    optional: {
-		    locale: "en",
-		    siteName: "yavko"
-	    },
-	    twitter: {
-	 	    card: "app",
-	    	site: "lolyavko",
-		    creator: "lolyavko"
-	    }}
-}
+		link: [
+			{ rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#000" }
+		],
+		meta: [
+			{ name: "msapplication-TileColor", content: "#000000" },
+			{ name: "msapplication-config", content: "/browserconfig.xml" },
+			{ name: "theme-color", content: "#FFF" },
+			{ name: "viewport", content: "width=device-width, initial-scale=1" },
+			{ name: "twitter:image", content: (og?.basic?.image ?? openGraph?.basic?.image) ?? "/favicons.svg" },
+		]
 
-const faviconMeta = {
-
-    link: [
-        {rel: "manifest", href: "/site.webmanifest"},
-        {rel: "mask-icon", href: "/favicons/safari-pinned-tab.svg", color: "#5bbad5"},
-        {rel: "shortcut icon", href: "/favicons/favicon.ico"},
-        {rel: "apple-touch-icon", sizes: "180x180", href: "/favicons/apple-touch-icon.png"},
-        {rel:"icon", type:"image/png", sizes:"32x32", href: "/favicons/favicon-32x32.png"},
-        {rel: "icon", type: "image/png", sizes: "16x16", href: "/favicons/favicon-16x16.png"}
-    ],
-    meta: [
-        {name: "msapplication-TileColor", content: "#000000"},
-        {name: "msapplication-config", content: "/browserconfig.xml"},
-        {name: "theme-color", content:"#000000"},
-        {name: "viewport", content: "width=device-width, initial-scale=1"}
-    ]
-
-}
+	}
 
 ---
-
 <html lang="en">
 
-    <head>
-        <SEO
-            title={siteData.name + " - " + title}
-            description={description}
-            openGraph={og ?? openGraph}
-            twitter={twitter}
-            extend={faviconMeta} />
-    </head>
-    <body>
-        <Navbar navbarItems={navbarItems} />
-        <div id="content">
-            <slot />
-        </div>
-        <span id="footer">
-            <Footer socials={socials}/>
-        </span>
-    </body>
+<head>
+	<SEO title={siteData.name + " - " + title} description={description} openGraph={og ?? openGraph} twitter={twitter}
+		extend={faviconMeta} />
+</head>
+
+<body>
+	<Navbar navbarItems={navbarItems} />
+	<main id="content">
+		<slot />
+	</main>
+	<footer id="footer">
+		<Footer socials={socials} />
+	</footer>
+</body>
 
 </html>

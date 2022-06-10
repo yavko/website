@@ -4,7 +4,7 @@
 	import figlet from "figlet";
 	import { Post } from '../types';
 	import dateStuff from '../dates';
-	import Date from '../components/Date.astro';
+	import Date from '../components/Date.svelte';
 
 	const { title, pubDate, modDate, description, authors, socialImage, lang, tags, section } = Astro.props.content as Post;
 	const { canonicalURL } = Astro;
@@ -13,6 +13,7 @@
 
 	const image = generateSocialImage({
 		style: ".social-title, .social-description { font-family: 'JetBrains Mono', monospace }",
+		images: [{ url: 'src/icons/yavko-white.png', attributes: { top: 480, left: 1050 } }],
 		backgroundColor: '#000000',
 		texts: [
 			{
@@ -21,12 +22,14 @@
 			},
 			{
 				content: description,
-				attributes: { x: '50', y: '325', 'font-size': '50px', fill: '#FFFFFF', class: "social-description" }
-			},
+				attributes: { x: '50', y: '225', 'font-size': '50px', fill: '#FFFFFF', class: "social-description" }
+			}
+			/*
 			{
 				content: ycon,
 				attributes: { top: "375", left: "900", 'font-size': '25px', fill: '#FFFFFF', class: "social-icon" }
 			}
+			*/
 		]
 	});
 
@@ -65,11 +68,13 @@
 	}
 
 ---
+
 <Page meta={meta}>
 	<h1>{meta.title}</h1>
 	<p>{meta.description}</p>
-	<p>Posted on {dateStuff(pubDate, "fancy")} and had been modified at {dateStuff(modDate, "fancy")} by {authors.join(",")}
-	</p>
+	<p>Posted at: <Date value={pubDate} /></p>
+	<p>Modified at: <Date value={modDate} /></p>
+	<p>Posted by {authors.join(",")}</p>
 	<hr />
 	<slot />
 </Page>
