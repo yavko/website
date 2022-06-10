@@ -10,7 +10,7 @@
 	if (!openGraph && !openGraph?.article) {
 		var og = {
 			basic: {
-				image: "/favicon.svg",
+				image: "/favicon.png",
 				title: title,
 				description: description,
 				type: "website",
@@ -38,7 +38,7 @@
 		meta: [
 			{ name: "msapplication-TileColor", content: "#000" },
 			{ name: "theme-color", content: "#FFF" },
-			{ name: "twitter:image", content: (og?.basic?.image ?? openGraph?.basic?.image) ?? "/favicon.svg" },
+			{ name: "twitter:image", content: (og?.basic?.image ?? openGraph?.basic?.image) ?? "/favicon.png" },
 		]
 
 	}
