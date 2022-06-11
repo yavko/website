@@ -2,7 +2,7 @@
 	import Page from "./page.astro";
 	import { generateSocialImage } from 'astro-social-images';
 	import figlet from "figlet";
-	import { Post } from '../types';
+	import type { Post } from '../types';
 	import dateStuff from '../dates';
 	import Date from '../components/Date.svelte';
 
@@ -23,13 +23,7 @@
 			{
 				content: description,
 				attributes: { x: '50', y: '225', 'font-size': '50px', fill: '#FFFFFF', class: "social-description" }
-			}
-			/*
-			{
-				content: ycon,
-				attributes: { top: "375", left: "900", 'font-size': '25px', fill: '#FFFFFF', class: "social-icon" }
-			}
-			*/
+			}	
 		]
 	});
 

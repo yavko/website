@@ -1,8 +1,14 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "es2020",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  }
+	"compilerOptions": {
+		"moduleResolution": "node",
+		"module": "ESNext",
+		"target": "ESNext",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"allowSyntheticDefaultImports": true,
+		"types": [
+			"vite/client"
+		]
+	}
 }
