@@ -44,9 +44,9 @@
   ],
   "short_name": "yavko",
   "description": "Yavko's personal website and blog.",
+  "lang": "en-US",
   "start_url": "/",
   "theme_color": "#fff",
   "background_color": "#000",
-  "display": "browser",
-  "lang": "en-US"
+  "display": "browser"
 }
