@@ -1,0 +1,19 @@
+---
+import Page from '../layouts/page.astro'
+import Markdown from "@astrojs/markdown-component"
+
+const desc = "The url specified did not match any existing pages."
+
+const meta = {
+  title: "404 - Page not found",
+  description: desc
+}
+---
+
+<Page meta={meta}>
+  <Markdown>
+  # 404 - Page not found
+  {desc} <br />
+	Would you like to back to the <a href="/">home</a> page?
+  </Markdown>
+</Page>

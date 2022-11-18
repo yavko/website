@@ -7,7 +7,7 @@
 	import Date from '../components/Date.svelte';
 
 	const { title, pubDate, modDate, description, authors, socialImage, lang, tags, section } = Astro.props.content as Post;
-	const { canonicalURL } = Astro;
+	const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 	const ycon = figlet.textSync('y');
 

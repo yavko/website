@@ -1,10 +1,12 @@
 import svelte from "@astrojs/svelte";
 import type { AstroUserConfig } from "astro";
 import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
+import sitemap from "astro-sitemap";
 import critters from "astro-critters";
 import compress from "astro-compress";
 import webmanifest from "astro-webmanifest";
+
+const site = "https://yavko.com"
 
 const config: AstroUserConfig = {
 	// Enable the Svelte renderer to support Svelte components.
@@ -13,7 +15,9 @@ const config: AstroUserConfig = {
 	},
 	integrations: [
 		svelte(),
-		sitemap(),
+		sitemap({
+			xslUrl: site + '/xsl/sitemap.xsl'
+		}),
 		critters(),
 		webmanifest({
 			icon: "src/icons/yavko.svg",
@@ -28,7 +32,7 @@ const config: AstroUserConfig = {
 		}),
 		compress()
 	],
-	site: "https://yavko.com",
+	site: site,
 	markdown: {
 		shikiConfig: {
 			theme: "dracula",
