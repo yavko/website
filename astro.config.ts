@@ -2,8 +2,8 @@ import svelte from "@astrojs/svelte";
 import type { AstroUserConfig } from "astro";
 import { defineConfig } from "astro/config";
 import sitemap from "astro-sitemap";
-import critters from "astro-critters";
-import compress from "astro-compress";
+import critters from "@playform/inline";
+import compress from "@playform/compress";
 import webmanifest from "astro-webmanifest";
 
 const site = "https://yavko.com"
